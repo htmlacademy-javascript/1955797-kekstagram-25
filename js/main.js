@@ -14,3 +14,16 @@ function getRandomNumber (min, max) {
 }
 
 getRandomNumber (55, 70);
+
+function commentLengthCheck (commentString, maxLength) {
+  const commentLength = String(commentString).length;
+  if (commentLength > maxLength) {
+    return false;
+  }
+
+  return true;
+}
+
+commentLengthCheck ('Some comment', 15);
+
+
