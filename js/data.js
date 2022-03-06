@@ -1,28 +1,5 @@
 import {getRandomNumber} from './util.js';
 
-/*
-{
-  id: '',
-  url: '',
-  description: '',
-  likes: '',
-  comments: [
-    {
-    id: '',
-    avatar: '',
-    message: '',
-    name: '',
-    },
-    {
-      id: '',
-      avatar: '',
-      message: '',
-      name: '',
-      },
-  ];
-}
-*/
-
 const MESSAGES_SET = [
   'Все отлично!',
   'В целом все неплохо. Но не все.',
@@ -31,6 +8,7 @@ const MESSAGES_SET = [
   'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!',
 ];
+
 const NAMES = [
   'Василий',
   'Варвара',
@@ -56,17 +34,19 @@ const DESCRIPTION_SET = [
 const getRandomArrayElement = (elements) => elements[getRandomNumber(0, elements.length - 1)];
 
 const getComments = (photoNumber) => {
-  const commentsSet = [];
+  const commentSet = [];
+
   for (let i = 1; i <= 3; i++) {
     const comment = {
-      id: photoNumber + i/10,
+      id: photoNumber + i / 10,
       avatar: `img/avatar-${getRandomNumber(1, 6)}.svg`,
       message: getRandomArrayElement(MESSAGES_SET),
       name: getRandomArrayElement(NAMES),
     };
-    commentsSet.push(comment);
+    commentSet.push(comment);
   }
-  return commentsSet;
+
+  return commentSet;
 };
 
 const createDescription = (photoNumber) => ({
@@ -78,10 +58,13 @@ const createDescription = (photoNumber) => ({
 });
 
 const createPhotoDescriptionSet = (count) => {
-  const photoDescriptions = [];
-  for (let i =1; i <= count; i++) {
-    photoDescriptions.push(createDescription(i));
+  const photoDescriptionSet = [];
+
+  for (let i = 1; i <= count; i++) {
+    photoDescriptionSet.push(createDescription(i));
   }
+
+  return photoDescriptionSet;
 };
 
 export {createPhotoDescriptionSet};
