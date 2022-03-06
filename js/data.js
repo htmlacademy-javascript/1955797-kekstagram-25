@@ -77,7 +77,11 @@ const createDescription = (photoNumber) => ({
   comments: getComments(photoNumber),
 });
 
-const photoDescriptions = [];
-for (let i =1; i <= 25; i++) {
-  photoDescriptions.push(createDescription(i));
-}
+const createPhotoDescriptionSet = (count) => {
+  const photoDescriptions = [];
+  for (let i =1; i <= count; i++) {
+    photoDescriptions.push(createDescription(i));
+  }
+};
+
+export {createPhotoDescriptionSet};
