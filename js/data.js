@@ -24,47 +24,49 @@ const NAMES = [
   'Николай',
 ];
 
-const DESCRIPTION_SET = [
+const DESCRIPTIONS = [
   'Просто фото.',
   'Хорошая фотография.',
   'Очень красивая фотография!',
   'Великолепная фотография!',
 ];
 
-const getRandomArrayElement = (elements) => elements[getRandomNumber(0, elements.length - 1)];
+const getRandomItem = (items) => items[getRandomNumber(0, items.length - 1)];
 
-const getComments = (photoNumber) => {
-  const commentSet = [];
+const commentQuantity = 3;
 
-  for (let i = 1; i <= 3; i++) {
+const createComments = (photoNumber) => {
+  const comments = [];
+
+  for (let i = 1; i <= commentQuantity; i++) {
     const comment = {
       id: photoNumber + i / 10,
       avatar: `img/avatar-${getRandomNumber(1, 6)}.svg`,
-      message: getRandomArrayElement(MESSAGES_SET),
-      name: getRandomArrayElement(NAMES),
+      message: getRandomItem(MESSAGES_SET),
+      name: getRandomItem(NAMES),
     };
-    commentSet.push(comment);
+    comments.push(comment);
   }
 
-  return commentSet;
+  return comments;
 };
 
-const createDescription = (photoNumber) => ({
+const createPhoto = (photoNumber) => ({
   id: photoNumber,
   url: `photos/${photoNumber}.jpg`,
-  description: getRandomArrayElement(DESCRIPTION_SET),
+  description: getRandomItem(DESCRIPTIONS),
   likes: getRandomNumber(15, 200),
-  comments: getComments(photoNumber),
+  comments: createComments(photoNumber),
 });
 
-const createPhotoDescriptionSet = (count) => {
-  const photoDescriptionSet = [];
+const createPhotos = (count) => {
+  const photos = [];
 
   for (let i = 1; i <= count; i++) {
-    photoDescriptionSet.push(createDescription(i));
+    photos.push(createPhoto(i));
   }
 
-  return photoDescriptionSet;
+  return photos;
 };
 
-export {createPhotoDescriptionSet};
+export {createPhotos};

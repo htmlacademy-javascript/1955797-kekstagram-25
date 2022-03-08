@@ -1,8 +1,8 @@
-import {getRandomNumber, isCommentLengthCorrect} from './util.js';
-import {createPhotoDescriptionSet} from './data.js';
+import {getRandomNumber, checkLength} from './util.js';
+import {createPhotos} from './data.js';
 
 getRandomNumber(55, 70);
 
-isCommentLengthCorrect('Some comment', 15);
+checkLength('Some comment', 15);
 
-createPhotoDescriptionSet(25);
+createPhotos(25);

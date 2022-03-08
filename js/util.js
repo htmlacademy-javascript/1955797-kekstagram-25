@@ -1,5 +1,5 @@
 const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
-const isCommentLengthCorrect = (commentString, maxLength) => commentString.length <= maxLength;
+const checkLength = (string, maxLength) => string.length <= maxLength;
 
-export {getRandomNumber, isCommentLengthCorrect};
+export {getRandomNumber, checkLength};
