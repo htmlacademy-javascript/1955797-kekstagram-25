@@ -1,4 +1,4 @@
-import {getRandomNumber} from './util.js';
+import {getRandomNumber, getRandomItem} from './util.js';
 
 const MESSAGES_SET = [
   'Все отлично!',
@@ -30,8 +30,6 @@ const DESCRIPTIONS = [
   'Очень красивая фотография!',
   'Великолепная фотография!',
 ];
-
-const getRandomItem = (items) => items[getRandomNumber(0, items.length - 1)];
 
 const commentQuantity = 3;
 

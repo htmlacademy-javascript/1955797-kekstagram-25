@@ -1,8 +1,4 @@
-import {getRandomNumber, checkLength} from './util.js';
-import {createPhotos} from './data.js';
-
-getRandomNumber(55, 70);
+import {checkLength} from './util.js';
+import './thumbnail.js';
 
 checkLength('Some comment', 15);
-
-createPhotos(25);
