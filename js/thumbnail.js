@@ -1,4 +1,4 @@
-import {createPhotos} from './data.js';
+import { createPhotos } from './data.js';
 
 const renderPictures = (count) => {
   const pictures = document.querySelector('.pictures');
@@ -6,7 +6,7 @@ const renderPictures = (count) => {
   const template = document.querySelector('#picture').content.querySelector('.picture');
   const photos = createPhotos(count);
 
-  photos.forEach(({url, likes, comments}) => {
+  photos.forEach(({ url, likes, comments }) => {
     const thumbnail = template.cloneNode(true);
     thumbnail.querySelector('.picture__img').src = url;
     thumbnail.querySelector('.picture__likes').textContent = likes;
@@ -17,4 +17,4 @@ const renderPictures = (count) => {
   pictures.appendChild(fragment);
 };
 
-export {renderPictures};
+export { renderPictures };

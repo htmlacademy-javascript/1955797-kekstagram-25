@@ -1,4 +1,4 @@
-import {getRandomNumber, getRandomItem} from './util.js';
+import { getRandomNumber, getRandomItem } from './util.js';
 
 const MESSAGES_SET = [
   'Все отлично!',
@@ -67,4 +67,4 @@ const createPhotos = (count) => {
   return photos;
 };
 
-export {createPhotos};
+export { createPhotos };
