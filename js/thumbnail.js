@@ -1,10 +1,7 @@
-import { createPhotos } from './data.js';
-
-const renderPictures = (count) => {
+const renderPictures = (photos) => {
   const pictures = document.querySelector('.pictures');
   const fragment = document.createDocumentFragment();
   const template = document.querySelector('#picture').content.querySelector('.picture');
-  const photos = createPhotos(count);
 
   photos.forEach(({ url, likes, comments }) => {
     const thumbnail = template.cloneNode(true);
