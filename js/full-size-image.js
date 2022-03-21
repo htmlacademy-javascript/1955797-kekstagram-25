@@ -11,11 +11,23 @@ const socialCommentCount = document.querySelector('.social__comment-count');
 const commentsLoader = document.querySelector('.comments-loader');
 const closeButton = document.querySelector('.big-picture__cancel');
 
+const closeFullSizeImage = () => {
+  bigPicture.classList.add('hidden');
+  document.body.classList.remove('modal-open');
+};
+
 const onImageEscKeydown = (evt) => {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
     closeFullSizeImage();
+    document.removeEventListener('keydown', onImageEscKeydown);
   }
+};
+
+const onCloseButtonClick = () => {
+  closeFullSizeImage();
+  closeButton.removeEventListener('click', onCloseButtonClick);
+  document.removeEventListener('keydown', onImageEscKeydown);
 };
 
 const openFullSizeImage = () => {
@@ -25,16 +37,8 @@ const openFullSizeImage = () => {
   socialCommentCount.classList.add('hidden');
   commentsLoader.classList.add('hidden');
 
-  closeButton.addEventListener('click', closeFullSizeImage);
+  closeButton.addEventListener('click', onCloseButtonClick);
   document.addEventListener('keydown', onImageEscKeydown);
-};
-
-const closeFullSizeImage = () => {
-  bigPicture.classList.add('hidden');
-  document.body.classList.remove('modal-open');
-
-  closeButton.removeEventListener('click', closeFullSizeImage);
-  document.removeEventListener('keydown', onImageEscKeydown);
 };
 
 const createFullSizeImage = (photo) => {
