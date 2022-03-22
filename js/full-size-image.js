@@ -1,33 +1,31 @@
 import { isEscapeKey } from './util.js';
 
 const bigPicture = document.querySelector('.big-picture');
-const bigPictureImage = document.querySelector('.big-picture__img img');
-const likesCount = document.querySelector('.likes-count');
-const commentsCount = document.querySelector('.comments-count');
-const socialComments = document.querySelector('.social__comments');
-const commentTemplate = document.querySelector('.social__comment');
-const socialCaption = document.querySelector('.social__caption');
-const socialCommentCount = document.querySelector('.social__comment-count');
-const commentsLoader = document.querySelector('.comments-loader');
-const closeButton = document.querySelector('.big-picture__cancel');
+const bigPictureImage = bigPicture.querySelector('.big-picture__img img');
+const likesCount = bigPicture.querySelector('.likes-count');
+const commentsCount = bigPicture.querySelector('.comments-count');
+const socialComments = bigPicture.querySelector('.social__comments');
+const commentTemplate = bigPicture.querySelector('.social__comment');
+const socialCaption = bigPicture.querySelector('.social__caption');
+const socialCommentCount = bigPicture.querySelector('.social__comment-count');
+const commentsLoader = bigPicture.querySelector('.comments-loader');
+const closeButton = bigPicture.querySelector('.big-picture__cancel');
 
-const closeFullSizeImage = () => {
+const closeFullSizeImage = (listener) => {
   bigPicture.classList.add('hidden');
   document.body.classList.remove('modal-open');
+  document.removeEventListener('keydown', listener);
 };
 
 const onImageEscKeydown = (evt) => {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
-    closeFullSizeImage();
-    document.removeEventListener('keydown', onImageEscKeydown);
+    closeFullSizeImage(onImageEscKeydown);
   }
 };
 
 const onCloseButtonClick = () => {
-  closeFullSizeImage();
-  closeButton.removeEventListener('click', onCloseButtonClick);
-  document.removeEventListener('keydown', onImageEscKeydown);
+  closeFullSizeImage(onImageEscKeydown);
 };
 
 const openFullSizeImage = () => {
