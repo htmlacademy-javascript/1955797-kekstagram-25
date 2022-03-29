@@ -1,7 +1,7 @@
 const form = document.querySelector('.img-upload__form');
 const textHashtags = form.querySelector('.text__hashtags');
 
-const pristine = new Pristine(form, {
+const pristine = new window.Pristine(form, {
   classTo: 'img-upload__text',
   errorTextParent: 'img-upload__text',
   errorTextClass: 'hashtag__error',

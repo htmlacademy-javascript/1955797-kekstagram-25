@@ -5,6 +5,8 @@ const form = document.querySelector('.img-upload__form');
 const fileUpload = form.querySelector('#upload-file');
 const imageUploadOverlay = form.querySelector('.img-upload__overlay');
 const uploadCancel = form.querySelector('#upload-cancel');
+const textHashtags = form.querySelector('.text__hashtags');
+const textDescription = form.querySelector('.text__description');
 
 const openImageUpload = () => {
   imageUploadOverlay.classList.remove('hidden');
@@ -19,7 +21,7 @@ const closeImageUpload = (listener) => {
 };
 
 const onImageEscKeydown = (evt) => {
-  if (isEscapeKey(evt)) {
+  if (isEscapeKey(evt) && evt.target !== textHashtags && evt.target !== textDescription) {
     evt.preventDefault();
     closeImageUpload(onImageEscKeydown);
   }
