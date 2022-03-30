@@ -1,5 +1,5 @@
 import { isEscapeKey } from './util.js';
-import { validateForm } from './validation.js';
+import { subscribeToFormValidation } from './validation.js';
 
 const form = document.querySelector('.img-upload__form');
 const fileUpload = form.querySelector('#upload-file');
@@ -39,7 +39,7 @@ const onImageUpload = () => {
 
 const uploadFile = () => {
   fileUpload.addEventListener('change', onImageUpload);
-  validateForm();
+  subscribeToFormValidation();
 };
 
 export { uploadFile };

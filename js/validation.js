@@ -7,33 +7,36 @@ const pristine = new window.Pristine(form, {
   errorTextClass: 'hashtag__error',
 });
 
-const validateHashtags = (hashtagText) => {
-  const hashtags = hashtagText.toLowerCase().split(' ').filter((el) => el);
-  if (hashtags.length > 5) {
-    return false;
-  }
-  if (new Set(hashtags).size !== hashtags.length) {
-    return false;
-  }
-  const re = /^#[A-Za-zА-Яа-яЁё0-9]{1,19}$/;
-  let isHashtagValid = true;
-  hashtags.forEach((hashtag) => {
-    const hashtagCheck = re.test(hashtag);
-    if (!hashtagCheck) {
-      isHashtagValid = false;
-    }
-  });
+const createHashtagArray = (hashtagText) => hashtagText.toLowerCase().split(' ').filter((el) => el);
 
-  return isHashtagValid;
+const validateHashtag = (hashtagText) => {
+  const hashtags = createHashtagArray(hashtagText);
+  const re = /^#[A-Za-zА-Яа-яЁё0-9]{1,19}$/;
+  const isValid = (hashtag) => re.test(hashtag);
+  return hashtags.every(isValid);
 };
 
-pristine.addValidator(textHashtags, validateHashtags, 'Хэштег должен начинаться с "#" и содержать буквы и числа. Длина хэштега не более 20 символов. Хэштеги не должны повторяться. Не более 5 хэштегов.');
+const checkUniquenessOfHashtag = (hashtagText) => {
+  const hashtags = createHashtagArray(hashtagText);
+  const hasUniqueHashtags = new Set(hashtags).size === hashtags.length;
+  return hasUniqueHashtags;
+};
 
-const validateForm = () => {
+const checkNumberOfHashtags = (hashtagText) => {
+  const hashtags = createHashtagArray(hashtagText);
+  const isNumberCorrect = hashtags.length <= 5;
+  return isNumberCorrect;
+};
+
+pristine.addValidator(textHashtags, validateHashtag, 'Хэштег должен начинаться с "#" и содержать буквы и числа (не более 20 символов).', 3, true);
+pristine.addValidator(textHashtags, checkUniquenessOfHashtag, 'Хэштеги не должны повторяться.', 2, true);
+pristine.addValidator(textHashtags, checkNumberOfHashtags, 'Не более 5 хэштегов.', 1, true);
+
+const subscribeToFormValidation = () => {
   form.addEventListener('submit', (evt) => {
     evt.preventDefault();
     pristine.validate();
   });
 };
 
-export { validateForm };
+export { subscribeToFormValidation };
