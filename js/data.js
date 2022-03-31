@@ -31,7 +31,7 @@ const DESCRIPTIONS = [
   'Великолепная фотография!',
 ];
 
-const commentQuantity = 3;
+const commentQuantity = 16;
 
 const createComments = (photoNumber) => {
   const comments = [];
