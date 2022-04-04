@@ -37,9 +37,9 @@ const onImageUpload = () => {
   uploadCancel.addEventListener('click', onUploadCancelClick);
 };
 
-const uploadFile = () => {
+const initUpload = () => {
   fileUpload.addEventListener('change', onImageUpload);
   subscribeToFormValidation();
 };
 
-export { uploadFile };
+export { initUpload  };

@@ -1416,3 +1416,9 @@ main {
 .hidden {
   display: none;
 }
+
+.hashtag__error {
+  color: #e90000;
+  text-transform: none;
+  margin-top: 10px;
+}
