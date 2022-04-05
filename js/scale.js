@@ -7,7 +7,7 @@ const imgUploadPreview = document.querySelector('.img-upload__preview');
 let scale;
 
 const scalePreview = () => {
-  scaleControlValue.value = scale;
+  scaleControlValue.value = `${scale}%`;
   imgUploadPreview.style.transform = `scale(${scale / 100})`;
 };
 
