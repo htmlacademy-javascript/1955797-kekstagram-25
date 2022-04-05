@@ -1,5 +1,6 @@
 import { isEscapeKey } from './util.js';
 import { subscribeToFormValidation } from './validation.js';
+import { initScaling } from './scale.js';
 
 const form = document.querySelector('.img-upload__form');
 const fileUpload = form.querySelector('#upload-file');
@@ -11,6 +12,8 @@ const textDescription = form.querySelector('.text__description');
 const openImageUpload = () => {
   imageUploadOverlay.classList.remove('hidden');
   document.body.classList.add('modal-open');
+
+  initScaling();
 };
 
 const closeImageUpload = (listener) => {
