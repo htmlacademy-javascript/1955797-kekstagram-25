@@ -8,6 +8,7 @@ const commentTemplate = bigPicture.querySelector('.social__comment');
 const socialCaption = bigPicture.querySelector('.social__caption');
 const socialCommentCount = bigPicture.querySelector('.social__comment-count');
 const commentsLoader = bigPicture.querySelector('.comments-loader');
+const closeButton = bigPicture.querySelector('.big-picture__cancel');
 
 let commentsToRenderCount = 5;
 let commentsArray;
@@ -82,5 +83,7 @@ const createFullSizeImage = (photo) => {
   renderComments();
   openFullSizeImage();
 };
+
+closeButton.addEventListener('click', onCloseButtonClick);
 
 export { createFullSizeImage, onCloseButtonClick };

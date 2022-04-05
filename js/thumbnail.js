@@ -1,10 +1,9 @@
-import { createFullSizeImage, onCloseButtonClick } from './full-size-image.js';
+import { createFullSizeImage } from './full-size-image.js';
 
 const renderPictures = (photos) => {
   const pictures = document.querySelector('.pictures');
   const fragment = document.createDocumentFragment();
   const template = document.querySelector('#picture').content.querySelector('.picture');
-  const closeButton = document.querySelector('.big-picture__cancel');
 
   photos.forEach((photo) => {
     const { url, likes, comments } = photo;
@@ -19,8 +18,6 @@ const renderPictures = (photos) => {
 
     fragment.appendChild(thumbnail);
   });
-
-  closeButton.addEventListener('click', onCloseButtonClick);
 
   pictures.appendChild(fragment);
 };
