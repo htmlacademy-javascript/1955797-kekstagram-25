@@ -4,6 +4,10 @@ const scaleControlBigger = imgUploadScale.querySelector('.scale__control--bigger
 const scaleControlValue = imgUploadScale.querySelector('.scale__control--value');
 const imgUploadPreview = document.querySelector('.img-upload__preview');
 
+const SCALE_STEP = 25;
+const SCALE_MAX = 100;
+const SCALE_MIN = 25;
+
 let scale;
 
 const scalePreview = () => {
@@ -12,23 +16,23 @@ const scalePreview = () => {
 };
 
 const scaleUp = () => {
-  if (scale < 100) {
-    scale += 25;
+  if (scale < SCALE_MAX) {
+    scale += SCALE_STEP;
   }
 
   scalePreview();
 };
 
 const scaleDown = () => {
-  if (scale > 25) {
-    scale -= 25;
+  if (scale > SCALE_MIN) {
+    scale -= SCALE_STEP;
   }
 
   scalePreview();
 };
 
 const initScaling = () => {
-  scale = 100;
+  scale = SCALE_MAX;
   scalePreview();
 };
 

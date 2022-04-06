@@ -10,7 +10,9 @@ const socialCommentCount = bigPicture.querySelector('.social__comment-count');
 const commentsLoader = bigPicture.querySelector('.comments-loader');
 const closeButton = bigPicture.querySelector('.big-picture__cancel');
 
-let commentsToRenderCount = 5;
+const COMMENTS_BLOCK = 5;
+
+let commentsToRenderCount = COMMENTS_BLOCK;
 let commentsArray;
 
 const renderComments = () => {
@@ -39,7 +41,7 @@ const renderComments = () => {
   socialComments.innerHTML = '';
   socialComments.appendChild(fragment);
 
-  commentsToRenderCount += 5;
+  commentsToRenderCount += COMMENTS_BLOCK;
 };
 
 const closeFullSizeImage = (listener) => {
@@ -49,7 +51,7 @@ const closeFullSizeImage = (listener) => {
   document.removeEventListener('keydown', listener);
   commentsLoader.removeEventListener('click', renderComments);
 
-  commentsToRenderCount = 5;
+  commentsToRenderCount = COMMENTS_BLOCK;
   commentsLoader.classList.remove('hidden');
 };
 

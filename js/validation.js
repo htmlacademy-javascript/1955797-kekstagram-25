@@ -1,6 +1,8 @@
 const form = document.querySelector('.img-upload__form');
 const textHashtags = form.querySelector('.text__hashtags');
 
+const HASHTAGS_MAX = 5;
+
 const pristine = new window.Pristine(form, {
   classTo: 'img-upload__text',
   errorTextParent: 'img-upload__text',
@@ -23,7 +25,7 @@ const checkUniquenessOfHashtag = (hashtagText) => {
 
 const checkNumberOfHashtags = (hashtagText) => {
   const hashtags = createHashtagArray(hashtagText);
-  return hashtags.length <= 5;
+  return hashtags.length <= HASHTAGS_MAX;
 };
 
 pristine.addValidator(textHashtags, validateHashtag, 'Хэштег должен начинаться с "#" и содержать буквы и числа (не более 20 символов).', 3, true);
