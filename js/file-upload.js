@@ -1,5 +1,7 @@
 import { isEscapeKey } from './util.js';
 import { subscribeToFormValidation } from './validation.js';
+import { initScaling } from './scale.js';
+import { initSlider } from './effects.js';
 
 const form = document.querySelector('.img-upload__form');
 const fileUpload = form.querySelector('#upload-file');
@@ -11,6 +13,9 @@ const textDescription = form.querySelector('.text__description');
 const openImageUpload = () => {
   imageUploadOverlay.classList.remove('hidden');
   document.body.classList.add('modal-open');
+
+  initScaling();
+  initSlider();
 };
 
 const closeImageUpload = (listener) => {
@@ -37,9 +42,9 @@ const onImageUpload = () => {
   uploadCancel.addEventListener('click', onUploadCancelClick);
 };
 
-const uploadFile = () => {
+const initUpload = () => {
   fileUpload.addEventListener('change', onImageUpload);
   subscribeToFormValidation();
 };
 
-export { uploadFile };
+export { initUpload  };
