@@ -19,7 +19,7 @@ const showErrorMessage = () => {
   const errorButton = errorMessage.querySelector('.error__button');
 
   if (errorWhileDownloading) {
-    errorTitle.textContent = 'Ошибка при загрузке данных с сервера';
+    errorTitle.textContent = 'Ошибка загрузки данных';
     errorButton.textContent = 'Ок';
   }
 
