@@ -36,15 +36,19 @@ const onUploadCancelClick = () => {
   closeImageUpload(onImageEscKeydown);
 };
 
+const closeForm = () => {
+  closeImageUpload(onImageEscKeydown);
+};
+
 const onImageUpload = () => {
   openImageUpload();
   document.addEventListener('keydown', onImageEscKeydown);
-  uploadCancel.addEventListener('click', onUploadCancelClick);
 };
 
 const initUpload = () => {
   fileUpload.addEventListener('change', onImageUpload);
-  subscribeToFormValidation();
+  uploadCancel.addEventListener('click', onUploadCancelClick);
+  subscribeToFormValidation(closeForm);
 };
 
 export { initUpload  };
