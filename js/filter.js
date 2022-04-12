@@ -1,4 +1,4 @@
-import { getRandomItem, debounce } from './util.js';
+import { shuffle, debounce } from './util.js';
 import { renderPictures } from './thumbnail.js';
 
 const imgFilters = document.querySelector('.img-filters');
@@ -13,14 +13,9 @@ let photosFromServer;
 let chosenFilter = filterDefault;
 
 const getRandomPhotos = (photos) => {
-  const randomPhotos = [];
-  while (randomPhotos.length !== RANDOM_PHOTOS_COUNT) {
-    const randomPhoto = getRandomItem(photos);
-    if (!randomPhotos.includes(randomPhoto)) {
-      randomPhotos.push(randomPhoto);
-    }
-  }
-  return randomPhotos;
+  const photosArrayCopy = photos.slice();
+  shuffle(photosArrayCopy);
+  return photosArrayCopy.slice(0, RANDOM_PHOTOS_COUNT);
 };
 
 const compareCommentsNumber = (a, b) => b.comments.length - a.comments.length;
