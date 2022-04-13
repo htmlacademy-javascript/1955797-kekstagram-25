@@ -1,11 +1,14 @@
-// import { createPhotos } from './data.js';
 import { renderPictures } from './thumbnail.js';
 import { getData } from './api.js';
+import { initFiltering } from './filter.js';
+
+const initRendering = (photos) => {
+  renderPictures(photos);
+  initFiltering(photos);
+};
 
 const showGallery = () => {
-  getData(renderPictures);
-//  const photos = createPhotos(25);
-//  renderPictures(photos);
+  getData(initRendering);
 };
 
 export { showGallery };
