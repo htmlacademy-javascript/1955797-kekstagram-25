@@ -1,7 +1,8 @@
 import { isEscapeKey } from './util.js';
-import { subscribeToFormValidation } from './validation.js';
+import { initFormValidation, resetFormValidation } from './validation.js';
 import { initScaling } from './scale.js';
-import { initSlider } from './effects.js';
+import { initSlider, resetEffects } from './effects.js';
+import { initUploadPreview } from './upload-preview.js';
 
 const form = document.querySelector('.img-upload__form');
 const fileUpload = form.querySelector('#upload-file');
@@ -23,6 +24,8 @@ const closeImageUpload = (listener) => {
   document.body.classList.remove('modal-open');
   document.removeEventListener('keydown', listener);
   form.reset();
+  resetEffects();
+  resetFormValidation();
 };
 
 const onImageEscKeydown = (evt) => {
@@ -48,7 +51,8 @@ const onImageUpload = () => {
 const initUpload = () => {
   fileUpload.addEventListener('change', onImageUpload);
   uploadCancel.addEventListener('click', onUploadCancelClick);
-  subscribeToFormValidation(closeForm);
+  initFormValidation(closeForm);
+  initUploadPreview();
 };
 
-export { initUpload  };
+export { initUpload };

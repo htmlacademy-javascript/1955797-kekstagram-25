@@ -46,7 +46,7 @@ const unblockSubmitButton = () => {
   submitButton.textContent = 'Опубликовать';
 };
 
-const subscribeToFormValidation = (closeForm) => {
+const initFormValidation = (closeForm) => {
   form.addEventListener('submit', (evt) => {
     evt.preventDefault();
 
@@ -71,4 +71,8 @@ const subscribeToFormValidation = (closeForm) => {
   });
 };
 
-export { subscribeToFormValidation };
+const resetFormValidation = () => {
+  pristine.reset();
+};
+
+export { initFormValidation, resetFormValidation };

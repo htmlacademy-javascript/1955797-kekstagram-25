@@ -24,6 +24,22 @@ const hideSlider = () => {
   }
 };
 
+const resetSlider = () => {
+  slider.noUiSlider.updateOptions({
+    range: {
+      min: 0,
+      max: 1,
+    },
+    start: 1,
+    step: 0.1,
+  });
+};
+
+const resetEffects = () => {
+  currentEffect = 'none';
+  resetSlider();
+};
+
 const onEffectChange = (evt) => {
   imgUploadPreview.classList.remove(`effects__preview--${currentEffect}`);
   currentEffect = evt.target.value;
@@ -32,14 +48,7 @@ const onEffectChange = (evt) => {
   hideSlider();
 
   if (currentEffect === 'none' || currentEffect === 'chrome' || currentEffect === 'sepia') {
-    slider.noUiSlider.updateOptions({
-      range: {
-        min: 0,
-        max: 1,
-      },
-      start: 1,
-      step: 0.1,
-    });
+    resetSlider();
   }
 
   if (currentEffect === 'marvin') {
@@ -111,4 +120,4 @@ const initSlider = () => {
   hideSlider();
 };
 
-export { initSlider };
+export { initSlider, resetEffects };
